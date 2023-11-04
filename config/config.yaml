@@ -1,0 +1,35 @@
+data:
+  version: "v1.0-trainval"
+  data_root_dir: "/media/zzj/DATA/DataSets/nuScenes"
+  database_path: "/media/zzj/DATA/DataSets/nuScenes/bs_db.npy"
+  train_query_path: "/media/zzj/DATA/DataSets/nuScenes/bs_train_query.npy"
+  test_query_path: "/media/zzj/DATA/DataSets/nuScenes/bs_test_query.npy"
+  val_query_path: "/media/zzj/DATA/DataSets/nuScenes/bs_val_query.npy"
+  info_path: '/media/zzj/DATA/DataSets/nuScenes/nuscenes_infos-bs.pkl'
+
+runner:
+  nonTrivPosDistThres: 9
+  posDistThr: 18
+  nNeg: 6
+  nNegSample: 1000
+  margin: 0.5
+  resize: [256, 704]
+
+#  optimizer
+  lr: 0.00001
+  step_size: 1
+  gamma: 0.5
+  num_epochs: 120
+
+#  training_process
+  num_workers_train: 6
+  num_workers_test: 8
+#  resume_path: '/home/zzj/workspace/LCPR/weights/LCPR_epoch_1.pth.tar'
+  resume_path:
+  resume_scheduler: False
+  log: False
+
+  ckpt_dir: '/home/zzj/workspace/LCPR/weights/'
+  result_dir: '/home/zzj/workspace/LCPR/runs/results/'
+  cache_dir: '/home/zzj/workspace/LCPR/runs/cache/'
+  log_dir: '/home/zzj/workspace/LCPR/runs/logs/'
