@@ -4,29 +4,37 @@ import os
 import random
 import pickle
 
+from tools.utils import check_path
+
 
 def main():
     random.seed(1)
-    with open('/media/zzj/DATA/DataSets/nuScenes/nuscenes_infos-boston.pkl', 'rb') as f:
-        infos_boston = pickle.load(f)
+    dataroot = '/media/zzj/DATA/DataSets/nuScenes'
+    infos_bs_path = os.path.join(dataroot, 'nuscenes_infos-bs.pkl')
+    infos_son_path = os.path.join(dataroot, 'nuscenes_infos-son.pkl')
+    infos_shv_path = os.path.join(dataroot, 'nuscenes_infos-shv.pkl')
+    infos_sq_path = os.path.join(dataroot, 'nuscenes_infos-sq.pkl')
+    check_path(infos_bs_path, infos_son_path, infos_shv_path, infos_sq_path)
 
-    with open('/media/zzj/DATA/DataSets/nuScenes/nuscenes_infos-son.pkl', 'rb') as f:
+    with open(infos_bs_path, 'rb') as f:
+        infos_bs = pickle.load(f)
+
+    with open(infos_son_path, 'rb') as f:
         infos_son = pickle.load(f)
 
-    with open('/media/zzj/DATA/DataSets/nuScenes/nuscenes_infos-shv.pkl', 'rb') as f:
+    with open(infos_shv_path, 'rb') as f:
         infos_shv = pickle.load(f)
 
-    with open('/media/zzj/DATA/DataSets/nuScenes/nuscenes_infos-sq.pkl', 'rb') as f:
+    with open(infos_sq_path, 'rb') as f:
         infos_sq = pickle.load(f)
 
-    dataroot = '/media/zzj/DATA/DataSets/nuScenes'
     pos_whole_bs = []
     pos_whole_son = []
     pos_whole_shv = []
     pos_whole_sq = []
     timestamps_bs = []
 
-    for i, info in enumerate(infos_boston):
+    for i, info in enumerate(infos_bs):
         pos = info['lidar_infos']['LIDAR_TOP']['ego_pose']['translation']
         pos_whole_bs.append(pos[:2])
         timestamp = info['timestamp']

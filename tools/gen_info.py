@@ -1,31 +1,8 @@
-import sys
-sys.path.append('../')
 import os
 import pickle
 import numpy as np
-from tools.utils import range_projection, eulerAngles2rotationMat
-from nuscenes.utils.data_classes import LidarPointCloud
 from tqdm import tqdm
 from nuscenes.nuscenes import NuScenes
-
-
-def gen_range_data(dataroot, infos, target_folder, fov_up, fov_down, proj_H, proj_W):
-    assert os.path.exists(target_folder)
-    for i in range(len(infos)):
-        fname = infos[i]['lidar_infos']['LIDAR_TOP']['filename']
-        pcl = LidarPointCloud.from_file(os.path.join(dataroot, fname))
-        pcl.remove_close(radius=2)
-        points = pcl.points[:3, :]  # 3 x N
-        rot_mat = eulerAngles2rotationMat(angles=[0, 0, -90])
-        points = rot_mat.dot(points)
-        proj_range, proj_vertex, _ = range_projection(points.T, fov_up=fov_up, fov_down=fov_down, proj_H=proj_H,
-                                                      proj_W=proj_W,
-                                                      max_range=80,
-                                                      cut_z=False)
-
-        dst_path = os.path.join(target_folder, os.path.split(fname.split('.')[0])[-1]) + '.npy'
-        np.save(dst_path, proj_range)
-        print('finished generating depth data at: ', dst_path)
 
 
 def gen_info(nusc, sample_tokens):
@@ -87,7 +64,6 @@ def get_location_sample_tokens(nusc, location):
         scene = nusc.scene[scene_index]
         sample_token = scene['first_sample_token']
 
-        # find all lidar scans and corresponding ego-poses of scene boston-seaport
         while not sample_token == '':
             sample = nusc.get('sample', sample_token)
             sample_token_list.append(sample_token)
@@ -112,45 +88,34 @@ def main():
     nusc_test = NuScenes(version='v1.0-test', dataroot=dataroot, verbose=True)
 
     # ====================generate infos====================
-    target_folder = '/media/zzj/DATA/DataSets/nuScenes'
+    dataroot = '/media/zzj/DATA/DataSets/nuScenes'
     sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='boston-seaport')
     sample_tokens_test = get_location_sample_tokens(nusc_test, location='boston-seaport')
     infos = gen_info(nusc_trainval, sample_tokens_trainval)
     infos.extend(gen_info(nusc_test, sample_tokens_test))
-    with open(os.path.join(target_folder, 'nuscenes_infos-bs.pkl'), 'wb') as f:
+    with open(os.path.join(dataroot, 'nuscenes_infos-bs.pkl'), 'wb') as f:
         pickle.dump(infos, f)
 
-# comment the following lines to for other locations
+    sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-onenorth')
+    sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-onenorth')
+    infos = gen_info(nusc_trainval, sample_tokens_trainval)
+    infos.extend(gen_info(nusc_test, sample_tokens_test))
+    with open(os.path.join(dataroot, 'nuscenes_infos-son.pkl'), 'wb') as f:
+        pickle.dump(infos, f)
 
-    # sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-onenorth')
-    # sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-onenorth')
-    # infos = gen_info(nusc_trainval, sample_tokens_trainval)
-    # infos.extend(gen_info(nusc_test, sample_tokens_test))
-    # with open(os.path.join(target_folder, 'nuscenes_infos-son.pkl'), 'wb') as f:
-    #     pickle.dump(infos, f)
+    sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-hollandvillage')
+    sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-hollandvillage')
+    infos = gen_info(nusc_trainval, sample_tokens_trainval)
+    infos.extend(gen_info(nusc_test, sample_tokens_test))
+    with open(os.path.join(dataroot, 'nuscenes_infos-shv.pkl'), 'wb') as f:
+        pickle.dump(infos, f)
 
-    # sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-hollandvillage')
-    # sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-hollandvillage')
-    # infos = gen_info(nusc_trainval, sample_tokens_trainval)
-    # infos.extend(gen_info(nusc_test, sample_tokens_test))
-    # with open(os.path.join(target_folder, 'nuscenes_infos-shv.pkl'), 'wb') as f:
-    #     pickle.dump(infos, f)
-
-    # sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-queenstown')
-    # sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-queenstown')
-    # infos = gen_info(nusc_trainval, sample_tokens_trainval)
-    # infos.extend(gen_info(nusc_test, sample_tokens_test))
-    # with open(os.path.join(target_folder, 'nuscenes_infos-sq.pkl'), 'wb') as f:
-    #     pickle.dump(infos, f)
-
-    # ====================generate range data====================
-    fov_up = 10
-    fov_down = -30
-    proj_H = 32
-    proj_W = 1056
-
-    target_folder = '/media/zzj/DATA/DataSets/nuScenes/samples/RANGE_DATA'
-    gen_range_data(dataroot, infos, target_folder, fov_up, fov_down, proj_H, proj_W)
+    sample_tokens_trainval = get_location_sample_tokens(nusc_trainval, location='singapore-queenstown')
+    sample_tokens_test = get_location_sample_tokens(nusc_test, location='singapore-queenstown')
+    infos = gen_info(nusc_trainval, sample_tokens_trainval)
+    infos.extend(gen_info(nusc_test, sample_tokens_test))
+    with open(os.path.join(dataroot, 'nuscenes_infos-sq.pkl'), 'wb') as f:
+        pickle.dump(infos, f)
 
 
 if __name__ == '__main__':

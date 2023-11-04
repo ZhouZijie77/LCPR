@@ -44,7 +44,7 @@ whole_test_loader = DataLoader(dataset=whole_test_set, batch_size=1, shuffle=Fal
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 evaluator = Evaluator(model, whole_test_set, whole_test_loader, result_dir, device)
 feature_name = 'test.pickle'
-weights = 'weights/LCPR_epoch_31.pth.tar'
+weights = 'weights/LCPR.pth.tar'
 feature_path = os.path.join(evaluator.result_dir, feature_name)
 evaluator.get_feature(weights, feature_path)
 evaluator.get_recall_at_n(feature_path)

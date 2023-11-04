@@ -1,5 +1,4 @@
 data:
-  version: "v1.0-trainval"
   data_root_dir: "/media/zzj/DATA/DataSets/nuScenes"
   database_path: "/media/zzj/DATA/DataSets/nuScenes/bs_db.npy"
   train_query_path: "/media/zzj/DATA/DataSets/nuScenes/bs_train_query.npy"
