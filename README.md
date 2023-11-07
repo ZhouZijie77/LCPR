@@ -1,6 +1,6 @@
 # LCPR
 ## Introduction
-This repository is the official implementation of our paper:
+This repository is the official implementation of [our paper:](https://arxiv.org/pdf/2311.03198.pdf)
 >LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition.
 >[Zijie Zhou](https://github.com/ZhouZijie77), [Jingyi Xu](https://github.com/BIT-XJY/), Guangming Xiong, [Junyi Ma*](https://github.com/BIT-MJY)
 
@@ -95,5 +95,12 @@ You can download our pre-trained model from this [link](https://drive.google.com
 ## Citation
 If you use our code in your academic work, please cite our paper:
 ```
-xxx
+@misc{zhou2023lcpr,
+      title={LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition}, 
+      author={Zijie Zhou and Jingyi Xu and Guangming Xiong and Junyi Ma},
+      year={2023},
+      eprint={2311.03198},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
