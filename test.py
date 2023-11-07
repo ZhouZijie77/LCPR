@@ -28,7 +28,7 @@ cache_dir = cfg['runner']['cache_dir']
 check_path(data_root_dir, database_path, train_query_path, test_query_path, val_query_path, info_path)
 check_dir(result_dir, cache_dir)
 
-# ====================model====================
+# ===========================model============================
 model = LCPR.create()
 
 # ==========================dataset===========================
@@ -44,7 +44,7 @@ whole_test_loader = DataLoader(dataset=whole_test_set, batch_size=1, shuffle=Fal
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 evaluator = Evaluator(model, whole_test_set, whole_test_loader, result_dir, device)
 feature_name = 'test.pickle'
-weights = 'weights/LCPR.pth.tar'
+weights = 'weights/LCPR.pth.tar'  # modify the path of the model to load
 feature_path = os.path.join(evaluator.result_dir, feature_name)
 evaluator.get_feature(weights, feature_path)
 evaluator.get_recall_at_n(feature_path)
