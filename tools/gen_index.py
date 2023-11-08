@@ -3,8 +3,7 @@ from sklearn.neighbors import NearestNeighbors
 import os
 import random
 import pickle
-
-from tools.utils import check_path
+from utils import check_path
 
 
 def main():

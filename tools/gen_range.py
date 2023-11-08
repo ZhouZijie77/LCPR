@@ -1,10 +1,8 @@
-import sys
-sys.path.append('../')
 import os
 import pickle
 import numpy as np
 from nuscenes.utils.data_classes import LidarPointCloud
-from tools.utils import range_projection, eulerAngles2rotationMat, check_dir
+from utils import range_projection, eulerAngles2rotationMat, check_dir
 
 
 def gen_range_data(dataroot, infos, target_folder, fov_up, fov_down, proj_H, proj_W):

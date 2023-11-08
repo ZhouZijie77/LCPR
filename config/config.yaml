@@ -1,4 +1,5 @@
 data:
+  #  You need to modify the following params according to your data path
   data_root_dir: "/media/zzj/DATA/DataSets/nuScenes"
   database_path: "/media/zzj/DATA/DataSets/nuScenes/bs_db.npy"
   train_query_path: "/media/zzj/DATA/DataSets/nuScenes/bs_train_query.npy"
@@ -20,7 +21,7 @@ runner:
   gamma: 0.5
   num_epochs: 120
 
-#  training_process
+#  training process
   num_workers_train: 6
   num_workers_test: 8
 #  resume_path: '/home/zzj/workspace/LCPR/weights/LCPR_epoch_1.pth.tar'
