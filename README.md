@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 ## Data Preparation
 - Please download the offical [nuScenes dataset](https://www.nuscenes.org/nuscenes).
-- Generate infos needed to run the code
+- Generate the infos and range data needed to run the code.
 ```bash
 cd tools
 python gen_info.py
@@ -90,7 +90,7 @@ Set the model path that you need to load in `test.py`. Then run the script:
 python test.py
 ```
 ## Download
-You can download our pre-trained model from this [link](https://drive.google.com/file/d/1YcAP7nL2_9xFXuYMMR-aC7dJqPMq77P0/view?usp=drive_link).
+You can download our pre-trained models from this [link](https://drive.google.com/drive/folders/1TRLEQWTa4tL4x9JDgQ4NvYmg8dN86U4X?usp=drive_link).
 
 ## Citation
 If you use our code in your academic work, please cite our paper:
