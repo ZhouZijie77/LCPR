@@ -17,19 +17,19 @@ runner:
 
 #  optimizer
   lr: 0.00001
-  step_size: 1
+  step_size: 6
   gamma: 0.5
   num_epochs: 120
 
 #  training process
   num_workers_train: 6
   num_workers_test: 8
-#  resume_path: '/home/zzj/workspace/LCPR/weights/LCPR_epoch_1.pth.tar'
+#  resume_path: 'weights/LCPR_epoch_1.pth.tar'
   resume_path:
   resume_scheduler: False
   log: False
 
-  ckpt_dir: '/home/zzj/workspace/LCPR/weights/'
-  result_dir: '/home/zzj/workspace/LCPR/runs/results/'
-  cache_dir: '/home/zzj/workspace/LCPR/runs/cache/'
-  log_dir: '/home/zzj/workspace/LCPR/runs/logs/'
+  ckpt_dir: 'weights/'
+  result_dir: 'runs/results/'
+  cache_dir: 'runs/cache/'
+  log_dir: 'runs/logs/'
