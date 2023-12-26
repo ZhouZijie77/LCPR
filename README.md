@@ -1,6 +1,6 @@
 # LCPR
 ## Introduction
-This repository is the official implementation of our paper accepted by **IEEE RAL 2023**. [[arXiv]](https://arxiv.org/pdf/2311.03198.pdf) [[IEEE]](https://ieeexplore.ieee.org/document/10373064)
+This repository is the official implementation of our paper accepted by **IEEE RAL 2023**. [[IEEE Xplore]](https://ieeexplore.ieee.org/document/10373064) [[arXiv]](https://arxiv.org/pdf/2311.03198.pdf)
 >LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition.
 >[Zijie Zhou](https://github.com/ZhouZijie77), [Jingyi Xu](https://github.com/BIT-XJY/), Guangming Xiong, [Junyi Ma*](https://github.com/BIT-MJY)
 
