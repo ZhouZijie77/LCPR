@@ -1,6 +1,6 @@
 # LCPR
 ## Introduction
-This repository is the official implementation of our paper accepted by **IEEE RAL 2023**. [[arxiv]](https://arxiv.org/pdf/2311.03198.pdf)
+This repository is the official implementation of our paper accepted by **IEEE RAL 2023**. [[arXiv]](https://arxiv.org/pdf/2311.03198.pdf) [[IEEE]](https://ieeexplore.ieee.org/document/10373064)
 >LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition.
 >[Zijie Zhou](https://github.com/ZhouZijie77), [Jingyi Xu](https://github.com/BIT-XJY/), Guangming Xiong, [Junyi Ma*](https://github.com/BIT-MJY)
 
@@ -95,12 +95,14 @@ You can download our pre-trained models from this [link](https://drive.google.co
 ## Citation
 If you use our code in your academic work, please cite our paper:
 ```
-@misc{zhou2023lcpr,
-      title={LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition}, 
-      author={Zijie Zhou and Jingyi Xu and Guangming Xiong and Junyi Ma},
-      year={2023},
-      eprint={2311.03198},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
+@ARTICLE{zhou2023lcpr,
+  author={Zhou, Zijie and Xu, Jingyi and Xiong, Guangming and Ma, Junyi},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={LCPR: A Multi-Scale Attention-Based LiDAR-Camera Fusion Network for Place Recognition}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-8},
+  doi={10.1109/LRA.2023.3346753}}
+
 ```
