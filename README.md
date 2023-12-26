@@ -104,5 +104,4 @@ If you use our code in your academic work, please cite our paper:
   number={},
   pages={1-8},
   doi={10.1109/LRA.2023.3346753}}
-
 ```
