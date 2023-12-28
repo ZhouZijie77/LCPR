@@ -71,7 +71,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     trainer = Trainer(model, train_loader, whole_train_loader, whole_val_set, whole_val_loader, device,
                       num_epochs, resume_path, log, log_dir, ckpt_dir, cache_dir,
-                      resume_scheduler, lr, step_size, gamma)
+                      resume_scheduler, lr, step_size, gamma, margin)
     trainer.train()
 
 

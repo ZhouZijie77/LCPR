@@ -15,7 +15,7 @@ import gc
 class Trainer:
     def __init__(self, model, train_loader, whole_train_loader, whole_val_set, whole_val_loader,
                  device, num_epochs, resume_path, log, log_dir, ckpt_dir, cache_dir,
-                 resume_scheduler, lr, step_size, gamma):
+                 resume_scheduler, lr, step_size, gamma, margin):
         self.train_loader = train_loader
         self.whole_train_loader = whole_train_loader
         self.whole_val_set = whole_val_set
@@ -36,6 +36,7 @@ class Trainer:
         self.lr = lr
         self.step_size = step_size
         self.gamma = gamma
+        self.margin = margin
 
     def train(self):
         print("Start training ...")
@@ -106,7 +107,7 @@ class Trainer:
                 query_des = query_des.expand(nNeg, -1)
                 pos_des = pos_des.expand(nNeg, -1)
 
-                loss = nn.functional.triplet_margin_loss(query_des, pos_des, neg_des, margin=0.5)
+                loss = nn.functional.triplet_margin_loss(query_des, pos_des, neg_des, margin=self.margin)
 
                 if torch.isnan(loss):
                     print('something wrong!!!')
