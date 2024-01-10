@@ -115,7 +115,7 @@ class TripletDataset(BaseDataset):
 
             # randomly select from potential negatives
             negSample = np.random.choice(self.potential_negatives[index], self.nNegSample)
-            negSample = np.unique(np.concatenate([self.negCache[index], negSample]).astype(np.int))
+            negSample = np.unique(np.concatenate([self.negCache[index], negSample]).astype(int))
             negFeat = h5feat[negSample]
             negFeat = torch.tensor(negFeat)
             dist = torch.norm(qFeat - negFeat, dim=1)
@@ -129,7 +129,7 @@ class TripletDataset(BaseDataset):
 
             negidx = negidx[vilatingNeg][:self.nNeg]
             nNeg = len(negidx)
-            negIndex = negSample[negidx].astype(np.int)
+            negIndex = negSample[negidx].astype(int)
             self.negCache[index] = negIndex
 
         query_idx = int(self.queries[index][0])
@@ -142,7 +142,7 @@ class TripletDataset(BaseDataset):
 
         if self.data_base[negIndex].ndim == 1:
             negIndex = np.array([negIndex])
-        neg_idx = self.data_base[negIndex][:, 0].astype(np.int)
+        neg_idx = self.data_base[negIndex][:, 0].astype(int)
         camera_images, lidar_images = [], []
         for i in range(len(neg_idx)):
             neg_camera_images, neg_lidar_image = self.load_data(neg_idx[i])
