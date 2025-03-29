@@ -5,6 +5,7 @@ This repository is the official implementation of our paper accepted by **IEEE R
 >[Zijie Zhou](https://github.com/ZhouZijie77), [Jingyi Xu](https://github.com/BIT-XJY/), Guangming Xiong, [Junyi Ma*](https://github.com/BIT-MJY)
 
 <img src="pics/intro.svg"/>
+
 Sensor fusion has been considered an effective method to overcome the weaknesses of individual sensors. Most existing multimodal place recognition methods only use limited field-of-view camera images, which leads to an imbalance between features from different modalities and limits the effectiveness of sensor fusion. Thus, we propose a novel multimodal place recognition neural network LCPR. It takes multi-view RGB images and LiDAR range images as input, extracts discriminative and yaw-rotation invariant global descriptors for fast query-database matching. 
 
 ## Table of Contents
