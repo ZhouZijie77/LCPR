@@ -323,7 +323,8 @@ class Evaluator:
             precisions.append(precision)
         return recalls, precisions
 
-    def get_f1score(self, recalls, precisions):
+    def get_f1score(self, feature_path):
+        recalls, precisions = self.get_pr(feature_path)
         recalls = np.array(recalls)
         precisions = np.array(precisions)
         ind = np.argsort(recalls)
